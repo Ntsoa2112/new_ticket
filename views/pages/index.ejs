@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../template/head'); %>
+</head>
+<body class="container">
+
+<header>
+    
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Bienvenue à l'Easytech</h1>
+       
+        <form data-toggle="validator" role="form" id="form" name="registration" action="/create" method="POST">
+            <div class="form-group">
+                <label for="inputName" class="control-label">Nom</label>
+                <input type="text" class="form-control" id="nom" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group">
+                <label for="inputName" class="control-label">Prénom</label>
+                <input type="text" class="form-control" id="prenom" placeholder="Votre prénom" required>
+            </div>
+            <div class="form-group">
+                <label for="Password" class="control-label">Password</label>
+                <div class="form-inline row">
+                <div class="form-group col-sm-6">
+                    <input type="password" data-minlength="6" class="form-control" id="password" placeholder="Password" required>
+                    <div class="help-block">Plus de 6 caractéres</div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <input type="password" class="form-control" id="passwordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
+                    <div class="help-block"><span id="errorValidation"></span> </div>
+                </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputName" class="control-label">Catégories:</label>
+                <div class="radio">
+                    <label>
+                    <input type="radio" name="underwear" required>
+                    Trans
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                    <input type="radio" name="underwear" required>
+                    Prod 1
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                    <input type="radio" name="underwear" required>
+                    Prod 2
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="underwear" required>
+                        Prod 3
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="underwear" required>
+                        Prod 4
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Créer</button>
+            </div>
+        </form>
+
+</main>
+
+<footer>
+    <%- include('../template/footer'); %>
+</footer>
+<script>
+    // Wait for the DOM to be ready
+$('#form').submit(function(event){
+    
+    var mdp = $('#password').val();
+    var mdp2 = $('#passwordConfirm').val();
+    if(mdp != mdp2){
+        event.preventDefault()
+        $('#password').val('');
+        $('#passwordConfirm').val('');
+        $('#password').focus();
+        $('#errorValidation').text('Confirmation mot de passe incorrecte').css( "color", "red" );
+        return false;
+    }
+})
+</script>
+</body>
+</html>
