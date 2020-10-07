@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/create', function(request, response) {
   var body = request.body; 
-  alert("reçu");
+  alert("reçu le message");
 });
 
 // catch 404 and forward to error handler
